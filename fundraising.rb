@@ -1,18 +1,23 @@
-project1 = 'Cat Surgery'
-project2 = 'Dog Surgery'
-project3 = 'Animal Shelter and Rescue'
-project4 = 'Vet Treatment Cost'
+def day_time
+  current_time = Time.new
+  current_time.strftime("%A %m/%d/%Y at %I:%m%p")
+end
 
-funding1 = 1000
-funding2 = 5500
-funding3 = 2800
-funding4 = 4000
+# def titlecase(project)
+#   "#{project.split.each{|project| project.capitalize!}.join(' ')}"
+# end
 
-current_time = Time.new
+def project_status(project, funding)
+  "#{project.titlecase} has raised $#{funding} as of #{day_time}."
+end
 
-puts "Project #{project1.capitalize} has $#{funding1} in funding."
-puts "Project #{project2.upcase} has $#{funding2} in funding."
-puts "Project #{project3.capitalize} has $#{funding3} in funding.".center(50, '*')
-puts "Project #{project4.capitalize.ljust(40, '.')} has $#{funding4} in funding."
+class String
+  def titlecase
+    "#{self.split.each{ |word| word.capitalize!}.join(' ')}"
+  end
+end
 
-puts "Funding started on #{current_time.strftime("%A %m/%d/%Y at %I:%m%p")}."
+puts project_status("Cat Surgery", 1000)
+puts project_status("Dog Surgery", 3500)
+puts project_status("Vet Treatment", 2200)
+puts project_status("Animal Rescue", 8000)
