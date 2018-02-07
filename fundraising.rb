@@ -1,23 +1,36 @@
-def day_time
-  current_time = Time.new
-  current_time.strftime("%A %m/%d/%Y at %I:%m%p")
-end
-
-# def titlecase(project)
-#   "#{project.split.each{|project| project.capitalize!}.join(' ')}"
-# end
-
-def project_status(project, funding)
-  "#{project.titlecase} has raised $#{funding} as of #{day_time}."
-end
-
 class String
   def titlecase
     "#{self.split.each{ |word| word.capitalize!}.join(' ')}"
   end
 end
 
-puts project_status("Cat Surgery", 1000)
-puts project_status("Dog Surgery", 3500)
-puts project_status("Vet Treatment", 2200)
-puts project_status("Animal Rescue", 8000)
+class Project
+  def initialize(name, current=0, target)
+    @name = name.titlecase
+    @current = current
+    @target = target
+  end
+
+  def add
+    @current += 25
+    "Project #{@name} got more funds!"
+  end
+
+  def subtract
+    @current -= 15
+    "Project #{@name} lost some funds!"
+  end
+
+  def to_s
+    "Project #{@name} has $#{@current} in funding towards a goal of $#{@target}."
+  end
+end
+
+proj1 = Project.new("cat surgery", 3000)
+puts proj1
+puts proj1.add
+puts proj1
+puts proj1.add
+puts proj1
+puts proj1.subtract
+puts proj1
