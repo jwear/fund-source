@@ -19,12 +19,12 @@ class Project
   end
 
   def add
-    @current += 25
+    @current += 50
     "Project #{@name} got more funds!"
   end
 
   def subtract
-    @current -= 15
+    @current -= 10
     "Project #{@name} lost some funds!"
   end
 
@@ -37,18 +37,16 @@ class Project
   end
 end
 
-proj1 = Project.new("cat surgery", 500, 3000)
-# puts proj1
-# puts proj1.add
-# puts proj1
-# puts proj1.add
-# puts proj1
-# puts proj1.subtract
-# puts proj1
-puts proj1
-proj1.name = "dog surgery"
-puts proj1.name
-puts proj1.current
-puts proj1.target
-puts proj1.need
-puts proj1
+project1 = Project.new("cat surgery", 500, 3000)
+project2 = Project.new("vet treatment cost", 150, 2500)
+project3 = Project.new("dog surgery", 1000, 5000)
+
+projects = [project1, project2, project3]
+
+projects.each do |project|
+  puts project.add
+  puts project.add
+  puts project.subtract
+  puts project.add
+  puts project
+end
