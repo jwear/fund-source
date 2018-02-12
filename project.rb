@@ -19,13 +19,13 @@ class Project
   end
 
   def add
-    @current += 50
-    "Project #{@name} got more funds!"
+    @current += 25
+    puts "Project #{@name} got more funds!"
   end
 
   def subtract
     @current -= 10
-    "Project #{@name} lost some funds!"
+    puts "Project #{@name} lost some funds!"
   end
 
   def need
