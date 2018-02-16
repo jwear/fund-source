@@ -5,8 +5,7 @@ class String
 end
 
 class Project
-  attr_accessor :name
-  attr_reader :current, :target
+  attr_reader :name, :current, :target
 
   def initialize(name, current=0, target)
     @name = name.titlecase
@@ -30,6 +29,14 @@ class Project
 
   def need
     @target - @current
+  end
+
+  def fully_funded?
+    need == 0
+  end
+
+  def status
+    fully_funded? ? "Fully funded" : "Not fully funded"
   end
 
   def to_s

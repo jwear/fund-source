@@ -1,4 +1,5 @@
 require_relative 'project'
+require_relative 'die'
 
 class Category
   attr_reader :title
@@ -17,10 +18,15 @@ class Category
     puts @projects
 
     @projects.each do |project|
-      puts project.add
-      puts project.add
-      puts project.subtract
+      die = Die.new
+      number_rolled = die.roll
+      if number_rolled.even?
+        project.add
+      else
+        project.subtract
+      end
       puts project
+      puts project.status
     end
   end
 end

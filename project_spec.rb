@@ -50,4 +50,24 @@ describe Project do
       expect(@project.current).to eq(0)
     end
   end
+
+  context "checks if the project is fully funded" do
+    before do
+      @project = Project.new("cat surgery", 3000, 3000)
+    end
+
+    it "checks if target fund minus current fund is equal to 0 " do
+      expect(@project).to be_fully_funded
+    end
+  end
+
+  context "checks if the project is not fully funded" do
+    before do
+      @project = Project.new("cat surgery", 2500, 3000)
+    end
+
+    it "checks if target fund is greater than current fund" do
+      expect(@project).not_to be_fully_funded
+    end
+  end
 end
