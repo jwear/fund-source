@@ -18,7 +18,7 @@ describe Project do
   end
 
   it "has a string representation" do
-    expect(@project.to_s).to eq("Project Cat Surgery has $500 in funding towards a goal of $3000.\nThe project still needs $2500 to reach the goal.")
+    expect(@project.to_s).to eq("Project Cat Surgery has $500 in funding towards a goal of $3000.")
   end
 
   it "has an initial target funding amount" do
@@ -68,6 +68,20 @@ describe Project do
 
     it "checks if target fund is greater than current fund" do
       expect(@project).not_to be_fully_funded
+    end
+  end
+
+  context "in a collection of projects" do
+    before do
+      @project1 = Project.new("cat surgery", 2900, 3000)
+      @project2 = Project.new("vet treatment cost", 1500, 3000)
+      @project3 = Project.new("dog surgery", 500, 3000)
+
+      @projects = [@project1, @project2, @project3]
+    end
+
+    it "is sorted by decreasing amount oustanding" do
+      expect(@projects.sort).to eq([@project3, @project2, @project1])
     end
   end
 end

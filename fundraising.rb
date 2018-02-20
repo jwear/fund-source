@@ -8,4 +8,5 @@ animals = Category.new("Animals")
 animals.add_project(project1)
 animals.add_project(project2)
 animals.add_project(project3)
-animals.request_funding
+animals.request_funding(2)
+animals.print_stats

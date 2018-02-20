@@ -17,6 +17,10 @@ class Project
     @name = new_name.titlecase
   end
 
+  def <=>(other)
+    other.need <=> need
+  end
+
   def add
     @current += 25
     puts "Project #{@name} got more funds!"
@@ -40,7 +44,7 @@ class Project
   end
 
   def to_s
-    "Project #{@name} has $#{@current} in funding towards a goal of $#{@target}.\nThe project still needs $#{need} to reach the goal."
+    "Project #{@name} has $#{@current} in funding towards a goal of $#{@target}."
   end
 end
 
