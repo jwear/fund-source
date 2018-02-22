@@ -10,5 +10,7 @@ module FundingRound
     else
       project.subtract
     end
+    pledge = PledgeContribution.random
+    puts "Project #{project.name} received a #{pledge.name} pledge worth $#{pledge.amount}."
   end
 end

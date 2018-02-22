@@ -1,6 +1,7 @@
 require_relative 'project'
 require_relative 'die'
 require_relative 'funding_round'
+require_relative 'pledges'
 
 class Category
   attr_reader :title
@@ -19,14 +20,20 @@ class Category
   end
 
   def request_funding(rounds)
-    puts "There are #{@projects.size} projects in #{@title}: "
+    pledges = PledgeContribution::PLEDGES
+
+    puts "\nThere are #{pledges.size} possible pledge amounts:"
+    pledges.each do |pledge|
+      puts "A #{pledge.name} is worth $#{pledge.amount}."
+    end
+
+    puts "\nThere are #{@projects.size} projects in #{@title}:"
     puts @projects
 
     1.upto(rounds) do |round|
       puts "\nFunding Round #{round}:"
       @projects.each do |project|
         FundingRound.funding_turns(project)
-        puts project
       end
     end
   end
