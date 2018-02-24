@@ -1,3 +1,5 @@
+require_relative 'pledges'
+
 class String
   def titlecase
     "#{self.split.each{ |word| word.capitalize!}.join(' ')}"
@@ -11,6 +13,7 @@ class Project
     @name = name.titlecase
     @current = current
     @target = target
+    @pledge_contributions = Hash.new(0)
   end
 
   def name=(new_name)
@@ -29,6 +32,16 @@ class Project
   def subtract
     @current -= 10
     puts "Project #{@name} lost some funds!"
+  end
+
+  def pledge_contribution(pledge)
+    @pledge_contributions[pledge.name] += pledge.amount
+    puts "Project #{@name} received a #{pledge.name} pledge worth $#{pledge.amount}."
+    puts "Project #{@name}'s pledges: #{@pledge_contributions}"
+  end
+
+  def amounts
+    @pledge_contributions.values.reduce(0, :+)
   end
 
   def need

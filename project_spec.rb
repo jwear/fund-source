@@ -41,9 +41,25 @@ describe Project do
     expect(@project.current).to eq(@current - 10)
   end
 
-  context "created with a defaul funding amount" do
+  it "computes amounts as the sum of all pledge amounts" do
+    expect(@project.amounts).to eq(0)
+
+    @project.pledge_contribution(Pledge.new(:bronze, 50))
+
+    expect(@project.amounts).to eq(50)
+
+    @project.pledge_contribution(Pledge.new(:silver, 75))
+
+    expect(@project.amounts).to eq(125)
+
+    @project.pledge_contribution(Pledge.new(:gold, 100))
+
+    expect(@project.amounts).to eq(225)
+  end
+
+  context "created with a default funding amount" do
     before do
-      @project = Project.new("dog surger", 5000)
+      @project = Project.new("dog Surgery", 5000)
     end
 
     it "has a default value of 0 for funding amount" do
