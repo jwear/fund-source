@@ -1,4 +1,4 @@
-require_relative 'project'
+require_relative '../lib/project'
 
 describe Project do
 

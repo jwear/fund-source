@@ -1,4 +1,4 @@
-require_relative 'pledges.rb'
+require_relative '../lib/pledges.rb'
 
 describe Pledge do
 

@@ -1,5 +1,5 @@
-require_relative 'category'
-require_relative 'die'
+require_relative '../lib/category'
+require_relative '../lib/die'
 
 describe Category do
   before do
