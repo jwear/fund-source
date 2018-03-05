@@ -4,7 +4,13 @@ This Ruby program runs a script that will generate fundraising projects that has
 
 ## Getting Started
 
-The project contains several directories which includes all the necessary files to run and test the script.
+The program contains several directories which includes all the necessary files to run and test the script.
+
+### Prerequisites
+
+1. Ruby 2.3.3 or higher
+1. RSpec 3.0
+
 
 ### Usage example
 
