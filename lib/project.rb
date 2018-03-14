@@ -45,7 +45,11 @@ class Project
   end
 
   def need
-    @target - @current
+    @target - total_funds
+  end
+
+  def total_funds
+    @current + amounts
   end
 
   def fully_funded?

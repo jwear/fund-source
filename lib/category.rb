@@ -16,7 +16,7 @@ class Category
   end
 
   def print_name_and_current(project)
-    puts "#{project.name} (#{project.current})"
+    puts "#{project.name} (#{project.total_funds})"
   end
 
   def request_funding(rounds)
